@@ -1,23 +1,38 @@
-# from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, jsonify
+from flask_sqlalchemy import SQLAlchemy
 
-# app = Flask(__name__)
-# # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
-# db = SQLAlchemy(app)
+app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
+db = SQLAlchemy(app)
 
 
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(80), unique=True)
-#     email = db.Column(db.String(120), unique=True)
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120), unique=True)
 
-#     def __init__(self, username, email):
-#         self.username = username
-#         self.email = email
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
 
-#     def __repr__(self):
-#         return '<User %r>' % self.username
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
+@app.route('/')
+def index():
+    return 'Flask is running!'
+
+
+@app.route('/data')
+def names():
+    data = {"names": ["Jhen", "Jandrew", "Jrace", "Jenny", "Jeng", "Jadvith"]}
+    return jsonify(data)
+
+
+if __name__ == '__main__':
+    app.run()
 
 # # from flask import Flask, render_template
 # # from flask_sqlalchemy import SQLAlchemy
@@ -49,21 +64,21 @@
 
 
 
-from flask import Flask, jsonify
+# from flask import Flask, jsonify
 
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return 'Flask is running!'
+# app = Flask(__name__)
 
 
-@app.route('/data')
-def names():
-    data = {"names": ["Jhen", "Jandrew", "Jrace", "Jenny", "Jeng", "Jadvith"]}
-    return jsonify(data)
+# @app.route('/')
+# def index():
+#     return 'Flask is running!'
 
 
-if __name__ == '__main__':
-    app.run()
+# @app.route('/data')
+# def names():
+#     data = {"names": ["Jhen", "Jandrew", "Jrace", "Jenny", "Jeng", "Jadvith"]}
+#     return jsonify(data)
+
+
+# if __name__ == '__main__':
+#     app.run()

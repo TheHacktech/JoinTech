@@ -4,11 +4,8 @@ What is your last name?
 What school are you from?
 What grade are you in?
 Will you be able to provide your own transportation to Pasadena, CA?
-If not, select the most inclusive option:
-I’m from SoCal (34.5 degrees latitude and below & in California)
-I’m from California
-I’m from United States
-I’m from Earth
+If we are able to send the below buses, which one would you get on?
+  - Stanford, Berkeley, UCLA, USC, Caltech, UCSD, UCI
 I’m interested in the following areas: Web Dev, Mobile Dev, AR/VR, Hardware, AI/ML, Other
 Please attach your resume
 Do you have any links (GitHub, LinkedIn, Portfolio) you’d like us to see?

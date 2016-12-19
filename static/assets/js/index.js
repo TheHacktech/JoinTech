@@ -1,4 +1,4 @@
-$("body").backstretch("assets/img/background1.png");
+$("body").backstretch("/assets/img/background1.png");
 
 $(document).ready(function() {
     $('.faqelem').click(function() {
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 
 */
-var config = {
+/*var config = {
   apiKey: "AIzaSyAfRJWCG5g0EFpYsA3gX2NQIK_jRYttaFY",
   authDomain: "hacktech-pre-registration.firebaseapp.com",
   databaseURL: "https://hacktech-pre-registration.firebaseio.com",
@@ -36,3 +36,4 @@ function save() {
   firebase.database().ref().push({email: eID});
   document.getElementById("hackerEmail").value = "Confirmed!";
 };
+*/

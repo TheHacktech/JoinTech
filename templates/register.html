@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="assets/css/index.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico" />
+    <link href="/assets/css/index.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Caltech's annual Hackathon!">
@@ -15,40 +15,40 @@
   <body>
     <section id="landing">
       <div class="contents">
-        <img src="assets/img/logo.png" />
+        <img src="/assets/img/logo.png" />
         <h1>Hacktech 2017</h1>
         <h3>March 3-5 @ Pasadena, CA</h3>
         <div id="form">
             <form method="post" action="{{ url_for('register') }}" id="registerForm">
                 <input type="text" name="fname" id="fname" placeholder="First Name">
                 <input type="text" name="lname" id="lname" placeholder="Last Name">
-            <input type="email" name="email" id="email" placeholder="Email">
-            <input type="number" name="age" id="age" placeholder="Age">
-            <select onchange="checkOther();" id="gradeDrop" name="grade">
-            <option disabled selected>Grade</option>
-            <option value="hs">High School</option>      
-            <option value="ug">Undergraduate</option>
-            <option value="gr">Graduate</option>
-            <option value="other">Other</option>
-            </select>
-            <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="visibility: hidden;">
-            <input type="text" id="school" name="school" placeholder="School">
-            <select name="busorigin" id="formSelectBus" >
-                <option disabled selected>Requested Bus</option>
-                <option value="no">No Bus Needed</option>      
-                <option value="ucb">UC Berkeley</option>      
-                <option value="tech">Caltech</option>
-                <option value="ucdav">UC Davis</option>
-                <option value="harv">Harvey Mudd</option>
-                <option value="uci">UC Irvine</option>
-                <option value="ucla">UCLA</option>
-                <option value="ucsd">UC San Diego</option>
-                <option value="stan">Stanford</option>
-                <option value="usc">USC</option>
-            </select>
-            <input type="url" name="website" id="website" placeholder="Personal Website">
-            <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn Profile">
-            <input id="formSubmit" class="btn btn-tech" type="submit" value="Register">
+                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="number" name="age" id="age" placeholder="Age">
+                <select onchange="checkOther();" id="gradeDrop" name="grade">
+                    <option disabled selected>Grade</option>
+                    <option value="hs">High School</option>      
+                    <option value="ug">Undergraduate</option>
+                    <option value="gr">Graduate</option>
+                    <option value="other">Other</option>
+                </select>
+                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="visibility: hidden;">
+                <input type="text" id="school" name="school" placeholder="School">
+                <select name="busorigin" id="formSelectBus" >
+                    <option disabled selected>Requested Bus</option>
+                    <option value="no">No Bus Needed</option>      
+                    <option value="ucb">UC Berkeley</option>      
+                    <option value="tech">Caltech</option>
+                    <option value="ucdav">UC Davis</option>
+                    <option value="harv">Harvey Mudd</option>
+                    <option value="uci">UC Irvine</option>
+                    <option value="ucla">UCLA</option>
+                    <option value="ucsd">UC San Diego</option>
+                    <option value="stan">Stanford</option>
+                    <option value="usc">USC</option>
+                </select>
+                <input type="url" name="website" id="website" placeholder="Personal Website">
+                <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn Profile">
+                <input id="formSubmit" class="btn btn-tech" type="submit" value="Register">
         <!-- <button id="apply">Apply</button> -->
             </form>
       </div>
@@ -56,10 +56,10 @@
     <section id="footer">
       <div class="contents">
         <div id="social">
-          <a href="http://twitter.com/theHackTech" target="_blank"><img class="socialicon" src="assets/img/twitter.png"></a>
-  				<a href="http://facebook.com/theHackTech" target="_blank"><img class="socialicon" src="assets/img/facebook.png"></a>
-  				<a href="https://www.linkedin.com/company/hacktech" target="_blank"><img class="socialicon" src="assets/img/linkedin.png"></a>
-          <a href="mailto:team@hacktech.io" target="_blank"><img class="socialicon" src="assets/img/email.png"></a>
+          <a href="http://twitter.com/theHackTech" target="_blank"><img class="socialicon" src="/assets/img/twitter.png"></a>
+  				<a href="http://facebook.com/theHackTech" target="_blank"><img class="socialicon" src="/assets/img/facebook.png"></a>
+  				<a href="https://www.linkedin.com/company/hacktech" target="_blank"><img class="socialicon" src="/assets/img/linkedin.png"></a>
+          <a href="mailto:team@hacktech.io" target="_blank"><img class="socialicon" src="/assets/img/email.png"></a>
         </div>
         ©2016 Hacktech<br/>
         All other trademarks and logos ® their respective owners.<br />
@@ -67,8 +67,9 @@
       </div>
     </section>
   </body>
+
   <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
-  <script src="assets/js/index.js"></script>
+  <script src="/assets/js/index.js"></script>
   <script>
     var frm = $('#registerForm');
     frm.submit(function (ev) {
@@ -83,6 +84,7 @@
 
         ev.preventDefault();
     });
+    
     function checkOther() {
         if(document.getElementById('gradeDrop').value==="other") {
             document.getElementById('gradeDrop').name = "gradeSelect";
@@ -94,5 +96,6 @@
             document.getElementById('formTextGrade').style="visibility: hidden;";
         }
     }
+
   </script>
 </html>

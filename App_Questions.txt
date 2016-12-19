@@ -1,0 +1,20 @@
+
+What is your first name?
+What is your last name?
+What school are you from?
+What grade are you in?
+Will you be able to provide your own transportation to Pasadena, CA?
+If not, select the most inclusive option:
+I’m from SoCal (34.5 degrees latitude and below & in California)
+I’m from California
+I’m from United States
+I’m from Earth
+I’m interested in the following areas: Web Dev, Mobile Dev, AR/VR, Hardware, AI/ML, Other
+Please attach your resume
+Do you have any links (GitHub, LinkedIn, Portfolio) you’d like us to see?
+Will you be over the age of 18 by March 3, 2017?
+Write an acrostic poem based around the word “ROSE”
+What is something you did today that could have been simplified/automated/made more exciting with technology?
+What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really!
+If you questions or have anything else you’d like to add, please do so here.
+Do you accept MLH Code of Conduct?

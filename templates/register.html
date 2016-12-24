@@ -25,7 +25,7 @@
                 <input type="email" name="email" id="email" placeholder="Email" style="width: 30%"></div>
                 <div><button id="ageExplain" class="label" style="border: 2px; width: 50%"> I will be 18 or older on March 3, 2017:</button><input type="checkbox" class="checkbox" name="age" id="age"></div>
                 <div style="margin: 6px"><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 45%">
-                    <option disabled selected>Grade</option>
+                    <option value="default" disabled selected>Grade</option>
                     <option value="hs">High School</option>      
                     <option value="ug">Undergraduate</option>
                     <option value="gr">Graduate</option>
@@ -34,7 +34,7 @@
                 <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="display: none;">
                 <input type="text" id="school" name="school" placeholder="School" style="width: 45%"></div>
                 <select name="busorigin" id="formSelectBus" >
-                    <option disabled selected>Requested Bus</option>
+                    <option value="default" disabled selected>Requested Bus</option>
                     <option value="no">No Bus Needed</option>      
                     <option value="ucb">UC Berkeley</option>      
                     <option value="tech">Caltech</option>
@@ -80,36 +80,5 @@
 
   <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
   <script src="/assets/js/index.js"></script>
-  <script>
-    var frm = $('#registerForm');
-    frm.submit(function (ev) {
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: frm.serialize(),
-            success: function (data) {
-                alert(data);
-            }
-        });
-
-        ev.preventDefault();
-    });
-    
-    function checkOther() {
-        if(document.getElementById('gradeDrop').value==="other") {
-            document.getElementById('gradeDrop').name = "gradeSelect";
-            document.getElementById('formTextGrade').name = "grade";
-            document.getElementById('formTextGrade').style="width: 30%";
-            document.getElementById('gradeDrop').style="width: 30%";
-            document.getElementById('school').style="width: 30%";
-        } else {
-            document.getElementById('gradeDrop').name = "grade";
-            document.getElementById('formTextGrade').name = "gradeOther";
-            document.getElementById('formTextGrade').style="display: none;";
-            document.getElementById('gradeDrop').style="width: 45%";
-            document.getElementById('school').style="width: 45%";
-        }
-    }
-
-  </script>
+  <script src="/assets/js/register.js"></script>
 </html>

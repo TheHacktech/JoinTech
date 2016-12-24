@@ -125,6 +125,13 @@ body {
     -moz-transition-duration: .3s;
     -o-transition-duration: .3s;
     transition-duration: .3s; }
+  #landing .failure_flash {
+    background-color: #fff;
+    color: #cd989f;
+    -webkit-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    -o-transition-duration: .3s;
+    transition-duration: .3s; }
   #landing input {
     outline: 0;
     border: 0;

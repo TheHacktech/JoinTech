@@ -1,9 +1,14 @@
-from flask import Flask, jsonify, render_template, request
+import logging
+from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField
 from pprint import pprint
+from utils.email_client import send_email
 
 app = Flask(__name__, static_folder='static/assets')
+# logging.basicConfig(filename='email_client.log',level=logging.DEBUG,
+#                     format='%(asctime)s %(message)s')
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
 db = SQLAlchemy(app)
@@ -56,12 +61,21 @@ def index():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
+
+    form = RegistrationForm(request.form)
+    user = User(form.fname.data, form.lname.data, form.email.data)
+    # Now we'll send the email application confirmation
+    subject = "Thanks for Applying to Hacktech 2017!"
+    html = render_template('Hacktech2017_submitapplication.html')
+    send_email(user.email, subject, html)
+
     #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User(form.fname.data, form.lname.data, form.email.data)
         db.session.add(user)
         db.session.commit()
+
         return "Thank you for registering, "+form.fname.data+"."
     elif request.method == 'POST':
         return "There was a problem with your registration information.\nPlease check your information and try again."
@@ -74,7 +88,6 @@ def names():
         data.append((user.fname, user.lname, user.email))
     pprint(data)
     return 'ok'
-
 
 if __name__ == '__main__':
     app.run()

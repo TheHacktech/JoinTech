@@ -1,13 +1,5 @@
-# This has a password
-
-SQLALCHEMY_DATABASE_URI = 'postgresql://Resume:@localhost/people'
+# This has passwords
 
 
-DATABASE = {
-    'drivername': 'postgres',
-    'host': 'localhost',
-    'port': '5432',
-    'username': 'ubuntu',
-    'password': '',
-    'database': 'hacktech'
-}
+GMAIL_USER = 'team@hacktech.io'  
+GMAIL_PASSWORD = 'hacktechwoot'

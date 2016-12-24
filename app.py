@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
 from pprint import pprint
+import datetime
 from utils.email_client import send_email
 
 app = Flask(__name__, static_folder='static/assets')
@@ -34,8 +35,9 @@ class User(db.Model):
     hacktechsuggest = db.Column(db.Text)
     othercomment = db.Column(db.Text)
     accept_tos = db.Column(db.Boolean)
+    timestamp = db.Column(db.DateTime)
 
-    def __init__(self, fname, lname, email, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos):
+    def __init__(self, fname, lname, email, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos, timestamp):
         '''
         initialize the user database.
         things that should be stored:
@@ -69,10 +71,11 @@ class User(db.Model):
         self.hacktechsuggest = hacktechsuggest
         self.othercomment    = othercomment
         self.accept_tos      = accept_tos
+        self.timestamp       = timestamp
         
 
     def __repr__(self):
-        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos)
+        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos) + ' ' + str(self.timestamp)
 
 class RegistrationForm(Form):
     fname = StringField('First Name', [validators.Length(min=1, max=120), validators.DataRequired()])
@@ -105,7 +108,7 @@ def register():
     #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data)
+        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.now())
         db.session.add(user)
         db.session.commit()
 
@@ -118,15 +121,6 @@ def register():
     elif request.method == 'POST':
         return "There was a problem with your registration information.\nPlease check your information and try again."
     return render_template('register.html', form=form)
-
-@app.route('/data')
-def names():
-    '''this is all useless for now. pls to ignore'''
-    data = []
-    for user in User.query.all():
-        data.append((user.fname, user.lname, user.email))
-    pprint(data)
-    return 'ok'
 
 if __name__ == '__main__':
     app.run()

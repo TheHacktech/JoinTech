@@ -102,19 +102,17 @@ def index():
 @app.route('/apply/', methods=['GET', 'POST'])
 def register():
 
-    form = RegistrationForm(request.form)
-    user = User(form.fname.data, form.lname.data, form.email.data)
-    # Now we'll send the email application confirmation
-    subject = "Thanks for Applying to Hacktech 2017!"
-    html = render_template('Hacktech2017_submitapplication.html')
-    send_email(user.email, subject, html)
-
     #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data)
         db.session.add(user)
         db.session.commit()
+
+        # Now we'll send the email application confirmation
+        subject = "Thanks for Applying to Hacktech 2017!"
+        html = render_template('Hacktech2017_submitapplication.html')
+        send_email(user.email, subject, html)
 
         return "Thank you for registering, "+form.fname.data+"."
     elif request.method == 'POST':

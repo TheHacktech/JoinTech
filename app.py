@@ -117,7 +117,7 @@ def register():
         html = render_template('Hacktech2017_submitapplication.html')
         send_email(user.email, subject, html)
 
-        return "Thank you for registering, "+form.fname.data+"."
+        return "Thank you for registering, "+form.fname.data+". We've sent a confirmation link to "+form.email.data+"."
     elif request.method == 'POST':
         return "There was a problem with your registration information.\nPlease check your information and try again."
     return render_template('register.html', form=form)

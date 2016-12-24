@@ -3,11 +3,8 @@ from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
 from pprint import pprint
-<<<<<<< HEAD
 import datetime
-=======
 from utils.email_client import send_email
->>>>>>> 884f9a7352c3955a3cfa9fe3e4e4500b112af531
 
 app = Flask(__name__, static_folder='static/assets')
 # logging.basicConfig(filename='email_client.log',level=logging.DEBUG,
@@ -127,17 +124,5 @@ def register():
         return "There was a problem with your registration information.\nPlease check your information and try again."
     return render_template('register.html', form=form)
 
-<<<<<<< HEAD
-=======
-@app.route('/data')
-def names():
-    '''this is all useless for now. pls to ignore'''
-    data = []
-    for user in User.query.all():
-        data.append((user.fname, user.lname, user.email))
-    pprint(data)
-    return 'ok'
-
->>>>>>> 884f9a7352c3955a3cfa9fe3e4e4500b112af531
 if __name__ == '__main__':
     app.run()

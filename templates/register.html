@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="/assets/css/index.css" rel="stylesheet">
+    <link href="/assets/css/register.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>-->
@@ -18,23 +18,24 @@
         <img src="/assets/img/logo.png" />
         <h1>Hacktech 2017</h1>
         <h3>March 3-5 @ Pasadena, CA</h3>
+        <h3 style="margin-top: 18px; margin-bottom: -12px;">* indicates a required field.</h3>
         <div id="form">
             <form method="post" action="{{ url_for('register') }}" id="registerForm">
-                <input type="text" name="fname" id="fname" placeholder="First Name">
-                <input type="text" name="lname" id="lname" placeholder="Last Name">
-                <input type="email" name="email" id="email" placeholder="Email">
-                <input type="number" name="age" id="age" placeholder="Age">
-                <select onchange="checkOther();" id="gradeDrop" name="grade">
-                    <option disabled selected>Grade</option>
+                <div><input type="text" name="fname" id="fname" placeholder="First Name *" style="width: 30%">
+                <input type="text" name="lname" id="lname" placeholder="Last Name *" style="width: 30%">
+                <input type="text" name="email" id="email" placeholder="Email *" style="width: 30%"></div>
+                <div><button id="ageExplain" class="label" style="border: 2px; width: 50%"> I will be 18 or older on March 3, 2017:</button><input type="checkbox" class="checkbox" name="age" id="age"></div>
+                <div style="margin: 6px"><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 45%">
+                    <option value="default" disabled selected>Grade *</option>
                     <option value="hs">High School</option>      
                     <option value="ug">Undergraduate</option>
                     <option value="gr">Graduate</option>
                     <option value="other">Other</option>
                 </select>
-                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="visibility: hidden;">
-                <input type="text" id="school" name="school" placeholder="School">
+                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="display: none;">
+                <input type="text" id="school" name="school" placeholder="School *" style="width: 45%"></div>
                 <select name="busorigin" id="formSelectBus" >
-                    <option disabled selected>Requested Bus</option>
+                    <option value="default" disabled selected>Requested Bus *</option>
                     <option value="no">No Bus Needed</option>      
                     <option value="ucb">UC Berkeley</option>      
                     <option value="tech">Caltech</option>
@@ -46,9 +47,19 @@
                     <option value="stan">Stanford</option>
                     <option value="usc">USC</option>
                 </select>
-                <input type="url" name="website" id="website" placeholder="Personal Website">
-                <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn Profile">
-                <input id="formSubmit" class="btn btn-tech" type="submit" value="Register">
+                <div><button id="webExplain" class="label" style="border: 2px; width: 60%">I'm interested in web development:</button><input type="checkbox" class="checkbox" name="webdev" id="webdev"></div>
+                <div><button id="mobileExplain" class="label" style="border: 2px; width: 60%">I'm interested in mobile development:</button><input type="checkbox" class="checkbox" name="mobiledev" id="mobiledev"></div>
+                <div><button id="arvrExplain" class="label" style="border: 2px; width: 60%">I'm interested in augmented/virtual reality:</button><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
+                <div><button id="hardwareExplain" class="label" style="border: 2px; width: 60%">I'm interested in hardware projects:</button><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
+                <div><button id="aiExplain" class="label" style="border: 2px; width: 60%">I'm interested in AI/machine learning:</button><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
+                <div style="margin: 6px; margin-bottom: 0;"><input type="url" name="website" id="website" placeholder="Personal Website">
+                    <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn Profile"></div>
+                <textarea name="poem" id="poem" placeholder="Write an acrostic poem based around the word 'ROSE' *." rows="6"></textarea>
+                <textarea name="techsimplify" id="techsimplify" placeholder="What is something you did today that could have been simplified/automated/made more exciting with technology? *" rows="6"></textarea>
+                <textarea name="hacktechsuggest" id="hacktechsuggest" placeholder="What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *" rows="6"></textarea>
+                <textarea name="othercomment" id="othercomment" placeholder="If you have questions or have anything else you’d like to add, please do so here." rows="6"></textarea>
+                <div><button id="cocExplain" class="label" style="border: 2px; width: 60%">I agree to abide by the MLH Code of Conduct *</button><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
+                <input id="formSubmit" class="btn btn-tech" type="submit" value="Apply">
         <!-- <button id="apply">Apply</button> -->
             </form>
       </div>
@@ -70,32 +81,5 @@
 
   <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:absolute;right:3%;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
   <script src="/assets/js/index.js"></script>
-  <script>
-    var frm = $('#registerForm');
-    frm.submit(function (ev) {
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: frm.serialize(),
-            success: function (data) {
-                alert(data);
-            }
-        });
-
-        ev.preventDefault();
-    });
-    
-    function checkOther() {
-        if(document.getElementById('gradeDrop').value==="other") {
-            document.getElementById('gradeDrop').name = "gradeSelect";
-            document.getElementById('formTextGrade').name = "grade";
-            document.getElementById('formTextGrade').style="";
-        } else {
-            document.getElementById('gradeDrop').name = "grade";
-            document.getElementById('formTextGrade').name = "gradeOther";
-            document.getElementById('formTextGrade').style="visibility: hidden;";
-        }
-    }
-
-  </script>
+  <script src="/assets/js/register.js"></script>
 </html>

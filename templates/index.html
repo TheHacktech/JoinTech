@@ -22,7 +22,7 @@
         <div id="form"><input type="email" id="hackerEmail" placeholder="Email">
         <button type="btn btn-primary" id="updatebtn" onclick="save()">Receive Updates</button></div>
         -->
-        <div id="form"><button type="btn btn-primary" id="registerbtn" onclick="location.href='/register';">Register Now</button></div>
+        <div id="form"><button type="btn btn-primary" id="registerbtn" onclick="location.href='{{ url_for('register') }}';">Apply Now</button></div>
         <!-- <button id="apply">Apply</button> -->
       </div>
     </section>
@@ -80,7 +80,7 @@
           </div>
           <div class="faqelem">
             <div class="question">Sounds great, how do I apply?</div>
-            <div class="answer">Applications will be opening soon - stay tuned!</div>
+            <div class="answer">Just click the Apply Now button!</div>
           </div>
           <div class="faqelem">
             <div class="question">What if I'm a Caltech student?</div>

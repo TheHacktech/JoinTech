@@ -81,6 +81,7 @@ body {
     #landing #form button:hover {
       background-color: #fff;
       color: #cd989f;
+      cursor: pointer;
       -webkit-transition-duration: .3s;
       -moz-transition-duration: .3s;
       -o-transition-duration: .3s;

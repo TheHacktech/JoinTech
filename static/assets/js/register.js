@@ -109,3 +109,12 @@ function checkOther() {
         document.getElementById('school').style="width: 45%";
     }
 }
+
+function uploadResume() {
+    document.getElementById("resumefileinput").click();
+}
+
+function updateBtnTxt() {
+    var name = document.getElementById("resumefileinput").files[0].name;
+    document.getElementById("resumeUploadBtn").innerHTML = document.getElementById("resumefileinput").files[0].name;
+}

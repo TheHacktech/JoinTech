@@ -99,9 +99,41 @@ html, body{
     }
   }
 
+      select {
+        width: 10%;
+        text-transform: uppercase;
+        font-family: $bodyfont;
+        letter-spacing: .08em;
+        font-size: 20px;
+        font-weight:bold;
+        /*margin-left: -4px;*/
+        outline: 0;
+        color: #fff;
+        border: 2px #fff solid;
+        background: none;
+        width: 35%;
+        padding: 4px;
+        margin-top: 10px;
+        -webkit-transition-duration: .3s;
+        -moz-transition-duration: .3s;
+        -o-transition-duration: .3s;
+        transition-duration: .3s;
+    }
+
+    select:hover {
+      background-color: #fff;
+      color: $rosegold;
+      -webkit-transition-duration: .3s;
+      -moz-transition-duration: .3s;
+      -o-transition-duration: .3s;
+      transition-duration: .3s;
+    }
+  
+
   input {
     outline: 0;
     border: 0;
+    margin: 6px;
     padding: 6px;
     width: 45%;
     font-size: 20px;

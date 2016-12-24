@@ -54,7 +54,7 @@ class RegistrationForm(Form):
 def index():
     return render_template('index.html')
 
-@app.route('/register/', methods=['GET', 'POST'])
+@app.route('/apply/', methods=['GET', 'POST'])
 def register():
     #TODO: finish this
     form = RegistrationForm(request.form)

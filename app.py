@@ -1,10 +1,18 @@
-from flask import Flask, jsonify, render_template, request
+import logging
+from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
 from pprint import pprint
+<<<<<<< HEAD
 import datetime
+=======
+from utils.email_client import send_email
+>>>>>>> 884f9a7352c3955a3cfa9fe3e4e4500b112af531
 
 app = Flask(__name__, static_folder='static/assets')
+# logging.basicConfig(filename='email_client.log',level=logging.DEBUG,
+#                     format='%(asctime)s %(message)s')
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
 db = SQLAlchemy(app)
@@ -99,16 +107,37 @@ def index():
 
 @app.route('/apply/', methods=['GET', 'POST'])
 def register():
+
+    form = RegistrationForm(request.form)
+    user = User(form.fname.data, form.lname.data, form.email.data)
+    # Now we'll send the email application confirmation
+    subject = "Thanks for Applying to Hacktech 2017!"
+    html = render_template('Hacktech2017_submitapplication.html')
+    send_email(user.email, subject, html)
+
     #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.now())
         db.session.add(user)
         db.session.commit()
+
         return "Thank you for registering, "+form.fname.data+"."
     elif request.method == 'POST':
         return "There was a problem with your registration information.\nPlease check your information and try again."
     return render_template('register.html', form=form)
 
+<<<<<<< HEAD
+=======
+@app.route('/data')
+def names():
+    '''this is all useless for now. pls to ignore'''
+    data = []
+    for user in User.query.all():
+        data.append((user.fname, user.lname, user.email))
+    pprint(data)
+    return 'ok'
+
+>>>>>>> 884f9a7352c3955a3cfa9fe3e4e4500b112af531
 if __name__ == '__main__':
     app.run()

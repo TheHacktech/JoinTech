@@ -77,6 +77,7 @@ function validate_form() {
         updatePage("You must accept the MLH Code of Conduct to participate at Hacktech.");
         return false;
     }
+    return true;
 }
 
 var frm = $('#registerForm');

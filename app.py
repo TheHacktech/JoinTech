@@ -15,7 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
 db = SQLAlchemy(app)
 
 class User(db.Model):
-    #TODO: finish this
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(120))
     lname = db.Column(db.String(120))
@@ -108,7 +107,7 @@ def register():
     #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.now())
+        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow())
         db.session.add(user)
         db.session.commit()
 

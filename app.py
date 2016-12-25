@@ -1,7 +1,7 @@
 import logging
 import os
 from werkzeug.utils import secure_filename
-from flask import Flask, jsonify, render_template, request, url_for
+from flask import Flask, jsonify, render_template, request, url_for, escape
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
 from pprint import pprint
@@ -125,7 +125,7 @@ def register():
         html = render_template('Hacktech2017_submitapplication.html')
         send_email(user.email, subject, html)
 
-        return "Thank you for registering, "+form.fname.data+". We've sent a confirmation link to "+form.email.data+"."
+        return "Thank you for registering, "+escape(form.fname.data)+". We've sent a confirmation link to "+escape(form.email.data)+"."
     elif request.method == 'POST':
         return "There was a problem with your registration information.\nPlease check your information and try again."
     return render_template('register.html', form=form)

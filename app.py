@@ -5,7 +5,7 @@ from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
 from pprint import pprint
-import datetime
+import datetime, time
 from utils.email_client import send_email
 
 app = Flask(__name__, static_folder='static/assets')
@@ -115,8 +115,7 @@ def register():
         if 'resumefileinput' not in request.files:
             return str(request.files)
         f = request.files['resumefileinput']
-        filename = secure_filename(f.filename)
-        resumepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        resumepath = os.path.join(app.config['UPLOAD_FOLDER'], str(time.time()))
         user = User(form.fname.data, form.lname.data, form.email.data, form.age.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow(), resumepath)
         f.save(resumepath)
         db.session.add(user)

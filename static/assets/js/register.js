@@ -87,7 +87,11 @@ frm.submit(function (ev) {
         $.ajax({
             type: frm.attr('method'),
             url: frm.attr('action'),
-            data: frm.serialize(),
+            data: new FormData(this),
+            //data: frm.serialize(),
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 updatePage(data);
             }

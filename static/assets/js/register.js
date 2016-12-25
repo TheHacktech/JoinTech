@@ -101,13 +101,13 @@ function checkOther() {
         document.getElementById('formTextGrade').name = "grade";
         document.getElementById('formTextGrade').style="width: 30%";
         document.getElementById('gradeDrop').style="width: 30%";
-        document.getElementById('school').style="width: 30%";
+        document.getElementById('gradeExplain').style="border: 2px; width: 30%";
     } else {
         document.getElementById('gradeDrop').name = "grade";
         document.getElementById('formTextGrade').name = "gradeOther";
         document.getElementById('formTextGrade').style="display: none;";
-        document.getElementById('gradeDrop').style="width: 45%";
-        document.getElementById('school').style="width: 45%";
+        document.getElementById('gradeDrop').style="width: 50%";
+        document.getElementById('gradeExplain').style="border: 2px; width: 40%";
     }
 }
 

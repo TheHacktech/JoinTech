@@ -22,12 +22,12 @@
         <div id="form">
             <form method="post" action="{{ url_for('register') }}" id="registerForm" enctype="multipart/form-data">
                 <div id="formMessage" class="label" style="border: 2px; width: 95%; display: none;"></div>
-                <div><input type="text" name="fname" id="fname" placeholder="First Name *" style="width: 30%">
-                <input type="text" name="lname" id="lname" placeholder="Last Name *" style="width: 30%">
-                <input type="text" name="email" id="email" placeholder="Email *" style="width: 30%"></div>
+                <div><div type="button" id="fnameExplain" class="label" style="border: 2px; width: 40%">* First Name:</div><input type="text" name="fname" id="fname" placeholder="Buford" style="width: 50%"></div>
+                <div><div type="button" id="lnameExplain" class="label" style="border: 2px; width: 40%">* Last Name:</div><input type="text" name="lname" id="lname" placeholder="Frink" style="width: 50%"></div>
+                <div><div type="button" id="emailExplain" class="label" style="border: 2px; width: 40%">* Email:</div><input type="text" name="email" id="email" placeholder="bfrink@caltech.edu" style="width: 50%"></div>
                 <div><div type="button" id="ageExplain" class="label" style="border: 2px; width: 50%"> I will be 18 or older on March 3, 2017:</div><input type="checkbox" class="checkbox" name="age" id="age"></div>
-                <div style="margin: 6px"><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 45%">
-                    <option value="default" disabled selected>Grade *</option>
+                <div style="margin: 6px"><div type="button" id="gradeExplain" class="label" style="border: 2px; width: 40%">* Grade:</div><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 50%">
+                    <option value="default" disabled selected>Select your grade...</option>
                     <option value="hs">High School</option>      
                     <option value="ug1">1st Year</option>
                     <option value="ug2">2nd Year</option>
@@ -36,10 +36,10 @@
                     <option value="gr">Graduate</option>
                     <option value="other">Other</option>
                 </select>
-                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="display: none;">
-                <input type="text" id="school" name="school" placeholder="School *" style="width: 45%"></div>
-                <div><select name="busorigin" id="formSelectBus" >
-                    <option value="default" disabled selected>Requested Bus *</option>
+                <input type="text" name="gradeOther" id="formTextGrade" placeholder="Postdoc, Sponsor, etc" style="display: none;"> </div>
+                <div><div type="button" id="schoolExplain" class="label" style="border: 2px; width: 40%">* School/University:</div><input type="text" id="school" name="school" placeholder="Caltech" style="width: 50%"></div>
+                <div style="margin-top: 6px;"><div type="button" id="busExplain" class="label" style="border: 2px; width: 40%">* Requested Bus:</div><select name="busorigin" id="formSelectBus" style="width: 50%;">
+                    <option value="default" disabled selected>Select a bus...</option>
                     <option value="no">No Bus Needed</option>      
                     <option value="ucb">UC Berkeley</option>      
                     <option value="tech">Caltech</option>
@@ -56,17 +56,17 @@
                 <div><div type="button" id="arvrExplain" class="label" style="border: 2px; width: 60%">I'm interested in augmented/virtual reality:</div><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
                 <div><div type="button" id="hardwareExplain" class="label" style="border: 2px; width: 60%">I'm interested in hardware projects:</div><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
                 <div><div id="aiExplain" type="button" class="label" style="border: 2px; width: 60%">I'm interested in AI/machine learning:</div><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
-                <div style="margin: 6px; margin-bottom: 0;"><input type="url" name="website" id="website" style="width: 30%" onclick="personalUpdate('website')" onblur="personalRemove('website')" placeholder="Personal Website">
-                    <input type="url" name="github" id="github" style="width: 30%" onclick="personalUpdate('github')" onblur="personalRemove('github')" placeholder="Github Profile">
-                    <input type="url" name="linkedin" id="linkedin" style="width: 30%" onclick="personalUpdate('linkedin')" onblur="personalRemove('linkedin')" placeholder="LinkedIn Profile"></div>
+                <div style="margin-top: 3px;"><div type="button" id="websiteExplain" class="label" style="border: 2px; width: 30%">Personal Website:</div><input type="url" name="website" id="website" style="width: 60%" onclick="personalUpdate('website')" onblur="personalRemove('website')" placeholder="http://www.caltech.edu"></div>
+                <div><div type="button" id="ghExplain" class="label" style="border: 2px; width: 30%">Github Profile:</div><input type="url" name="github" id="github" style="width: 60%" onclick="personalUpdate('github')" onblur="personalRemove('github')" placeholder="http://www.github.com/thehacktech"></div>
+                <div style="margin-bottom: 3px;"><div type="button" id="linkedinExplain" class="label" style="border: 2px; width: 30%">LinkedIn Profile:</div><input type="url" name="linkedin" id="linkedin" style="width: 60%" onclick="personalUpdate('linkedin')" onblur="personalRemove('linkedin')" placeholder="http://www.linkedin.com/company/hacktech"></div>
                 <textarea name="poem" id="poem" placeholder="Write an acrostic poem based around the word 'ROSE'. *" rows="6"></textarea>
                 <textarea name="techsimplify" id="techsimplify" placeholder="What is something you did today that could have been simplified/automated/made more exciting with technology? *" rows="6"></textarea>
                 <textarea name="hacktechsuggest" id="hacktechsuggest" placeholder="What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *" rows="6"></textarea>
                 <textarea name="othercomment" id="othercomment" placeholder="If you have questions or have anything else you’d like to add, please do so here." rows="6"></textarea>
-                <div><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 45%">Upload your resume:</div><button type="button" id="resumeUploadBtn" style="width: 45%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
+                <div><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 30%">Upload your resume:</div><button type="button" id="resumeUploadBtn" style="width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
                 <input type="file" id="resumefileinput" name="resumefileinput" style="display: none" accept=".doc,.docx,.pdf,.txt,.rtf" onchange="updateBtnTxt()">
                 </div>
-                <div><div id="cocExplain" type="button" class="label" style="border: 2px; width: 60%">I agree to abide by the MLH Code of Conduct *</div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
+                <div><div id="cocExplain" type="button" class="label" style="border: 2px; width: 60%">* I agree to abide by the MLH Code of Conduct:</div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
                 <input id="formSubmit" class="btn btn-tech" type="submit" value="Apply">
         <!-- <button id="apply">Apply</button> -->
             </form>

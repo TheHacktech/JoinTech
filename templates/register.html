@@ -21,6 +21,7 @@
         <h3 style="margin-top: 18px; margin-bottom: -12px;">* indicates a required field.</h3>
         <div id="form">
             <form method="post" action="{{ url_for('register') }}" id="registerForm" enctype="multipart/form-data">
+                <div id="formMessage" class="label" style="border: 2px; width: 95%; display: none;"></div>
                 <div><input type="text" name="fname" id="fname" placeholder="First Name *" style="width: 30%">
                 <input type="text" name="lname" id="lname" placeholder="Last Name *" style="width: 30%">
                 <input type="text" name="email" id="email" placeholder="Email *" style="width: 30%"></div>

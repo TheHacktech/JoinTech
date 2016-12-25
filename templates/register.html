@@ -56,10 +56,10 @@
                 <div><div type="button" id="arvrExplain" class="label" style="border: 2px; width: 60%">I'm interested in augmented/virtual reality:</div><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
                 <div><div type="button" id="hardwareExplain" class="label" style="border: 2px; width: 60%">I'm interested in hardware projects:</div><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
                 <div><div id="aiExplain" type="button" class="label" style="border: 2px; width: 60%">I'm interested in AI/machine learning:</div><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
-                <div style="margin: 6px; margin-bottom: 0;"><input type="url" name="website" id="website" style="width: 30%" placeholder="Personal Website">
-                    <input type="url" name="github" id="github" style="width: 30%" placeholder="Github Profile">
-                    <input type="url" name="linkedin" id="linkedin" style="width: 30%" placeholder="LinkedIn Profile"></div>
-                <textarea name="poem" id="poem" placeholder="Write an acrostic poem based around the word 'ROSE' *." rows="6"></textarea>
+                <div style="margin: 6px; margin-bottom: 0;"><input type="url" name="website" id="website" style="width: 30%" onclick="personalUpdate('website')" onblur="personalRemove('website')" placeholder="Personal Website">
+                    <input type="url" name="github" id="github" style="width: 30%" onclick="personalUpdate('github')" onblur="personalRemove('github')" placeholder="Github Profile">
+                    <input type="url" name="linkedin" id="linkedin" style="width: 30%" onclick="personalUpdate('linkedin')" onblur="personalRemove('linkedin')" placeholder="LinkedIn Profile"></div>
+                <textarea name="poem" id="poem" placeholder="Write an acrostic poem based around the word 'ROSE'. *" rows="6"></textarea>
                 <textarea name="techsimplify" id="techsimplify" placeholder="What is something you did today that could have been simplified/automated/made more exciting with technology? *" rows="6"></textarea>
                 <textarea name="hacktechsuggest" id="hacktechsuggest" placeholder="What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *" rows="6"></textarea>
                 <textarea name="othercomment" id="othercomment" placeholder="If you have questions or have anything else you’d like to add, please do so here." rows="6"></textarea>

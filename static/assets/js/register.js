@@ -118,3 +118,15 @@ function updateBtnTxt() {
     var name = document.getElementById("resumefileinput").files[0].name;
     document.getElementById("resumeUploadBtn").innerHTML = document.getElementById("resumefileinput").files[0].name;
 }
+
+function personalUpdate(id) {
+    if(document.getElementById(id).value.length <= 0) {
+        document.getElementById(id).value = 'http://';
+    }
+}
+
+function personalRemove(id) {
+    if(document.getElementById(id).value === 'http://') {
+        document.getElementById(id).value = "";
+    }
+}

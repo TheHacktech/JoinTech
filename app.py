@@ -1,4 +1,6 @@
 import logging
+import os
+from werkzeug.utils import secure_filename
 from flask import Flask, jsonify, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, IntegerField, TextAreaField
@@ -12,6 +14,7 @@ app = Flask(__name__, static_folder='static/assets')
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
+app.config['UPLOAD_FOLDER'] = '/resumes'
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -35,8 +38,9 @@ class User(db.Model):
     othercomment = db.Column(db.Text)
     accept_tos = db.Column(db.Boolean)
     timestamp = db.Column(db.DateTime)
+    resumepath = db.Column(db.String(120))
 
-    def __init__(self, fname, lname, email, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos, timestamp):
+    def __init__(self, fname, lname, email, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos, timestamp, resumepath):
         '''
         initialize the user database.
         things that should be stored:
@@ -71,10 +75,11 @@ class User(db.Model):
         self.othercomment    = othercomment
         self.accept_tos      = accept_tos
         self.timestamp       = timestamp
+        self.resumepath      = resumepath
         
 
     def __repr__(self):
-        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos) + ' ' + str(self.timestamp)
+        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos) + ' ' + str(self.timestamp) + ' ' + self.resumepath
 
 class RegistrationForm(Form):
     fname = StringField('First Name', [validators.Length(min=1, max=120), validators.DataRequired()])
@@ -103,14 +108,17 @@ def index():
 
 @app.route('/apply/', methods=['GET', 'POST'])
 def register():
-
-    #TODO: finish this
     form = RegistrationForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow())
+        if 'resumefileinput' not in request.files:
+            return str(request.files)
+        f = request.files['resumefileinput']
+        filename = secure_filename(f.filename)
+        resumepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow(), resumepath)
+        f.save(resumepath)
         db.session.add(user)
         db.session.commit()
-
         # Now we'll send the email application confirmation
         subject = "Thanks for Applying to Hacktech 2017!"
         html = render_template('Hacktech2017_submitapplication.html')

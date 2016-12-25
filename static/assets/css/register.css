@@ -92,13 +92,9 @@ body {
       -moz-transition-duration: .3s;
       -o-transition-duration: .3s;
       transition-duration: .3s; }
-    #landing #form .label:hover {
+    #landing #form .label {
       background: none;
-      color: #fff;
-      -webkit-transition-duration: .3s;
-      -moz-transition-duration: .3s;
-      -o-transition-duration: .3s;
-      transition-duration: .3s; }
+      color: #fff; }
   #landing select {
     width: 10%;
     text-transform: uppercase;
@@ -126,12 +122,8 @@ body {
     -o-transition-duration: .3s;
     transition-duration: .3s; }
   #landing .failure_flash {
-    background-color: #fff;
-    color: #cd989f;
-    -webkit-transition-duration: .3s;
-    -moz-transition-duration: .3s;
-    -o-transition-duration: .3s;
-    transition-duration: .3s; }
+    background: none;
+    color: #fff; }
   #landing input {
     outline: 0;
     border: 0;

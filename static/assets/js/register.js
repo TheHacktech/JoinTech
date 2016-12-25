@@ -4,7 +4,7 @@ function updatePage(data) {
         document.getElementById("form").innerHTML = '<p id="success" class="label" style="border: 2px; width: 95%">'+data+'</p>';
     } else { // register failure
         if(error === false) {
-            document.getElementById("registerForm").innerHTML = '<div><button id="failure" class="label" style="border: 2px; width: 95%; margin-bottom: 6px; margin-top: -6px">'+data+'</button></div>' +
+            document.getElementById("registerForm").innerHTML = '<p id="failure" class="label" style="border: 2px; width: 95%; margin-bottom: 6px; margin-top: -6px">'+data+'</p></div>' +
                 document.getElementById("registerForm").innerHTML; 
             error = true;
         } else {

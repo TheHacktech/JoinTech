@@ -22,6 +22,7 @@ class User(db.Model):
     fname = db.Column(db.String(120))
     lname = db.Column(db.String(120))
     email = db.Column(db.String(120), unique=True)
+    age = db.Column(db.Boolean)
     grade = db.Column(db.String(40))
     school = db.Column(db.String(120))
     busorigin = db.Column(db.String(80))
@@ -40,7 +41,7 @@ class User(db.Model):
     timestamp = db.Column(db.DateTime)
     resumepath = db.Column(db.String(120))
 
-    def __init__(self, fname, lname, email, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos, timestamp, resumepath):
+    def __init__(self, fname, lname, email, age, grade, school, busorigin, webdev, mobiledev, arvrdev, hardwaredev, aidev, website, linkedin, poem, techsimplify, hacktechsuggest, othercomment, accept_tos, timestamp, resumepath):
         '''
         initialize the user database.
         things that should be stored:
@@ -59,6 +60,7 @@ class User(db.Model):
         self.fname           = fname
         self.lname           = lname
         self.email           = email
+        self.age             = age
         self.grade           = grade
         self.school          = school
         self.busorigin       = busorigin
@@ -79,7 +81,7 @@ class User(db.Model):
         
 
     def __repr__(self):
-        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos) + ' ' + str(self.timestamp) + ' ' + self.resumepath
+        return self.fname + ' ' + self.lname + ' ' + self.email + ' ' + str(self.age) + ' ' + self.grade + ' ' + self.school + ' ' + self.busorigin + ' ' + str(self.webdev) + ' ' + str(self.mobiledev) + ' ' + str(self.arvrdev) + ' ' + str(self.hardwaredev) + ' ' + str(self.aidev) + ' ' + self.website + ' ' + self.linkedin + ' ' + self.poem + ' ' + self.techsimplify + ' ' + self.hacktechsuggest + ' ' + self.othercomment + ' ' + str(self.accept_tos) + ' ' + str(self.timestamp) + ' ' + self.resumepath
 
 class RegistrationForm(Form):
     fname = StringField('First Name', [validators.Length(min=1, max=120), validators.DataRequired()])
@@ -115,7 +117,7 @@ def register():
         f = request.files['resumefileinput']
         filename = secure_filename(f.filename)
         resumepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        user = User(form.fname.data, form.lname.data, form.email.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow(), resumepath)
+        user = User(form.fname.data, form.lname.data, form.email.data, form.age.data, form.grade.data, form.school.data, form.busorigin.data, form.webdev.data, form.mobiledev.data, form.arvrdev.data, form.hardwaredev.data, form.aidev.data, form.website.data, form.linkedin.data, form.poem.data, form.techsimplify.data, form.hacktechsuggest.data, form.othercomment.data, form.accept_tos.data, datetime.datetime.utcnow(), resumepath)
         f.save(resumepath)
         db.session.add(user)
         db.session.commit()

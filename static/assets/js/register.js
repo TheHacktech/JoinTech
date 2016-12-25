@@ -1,10 +1,11 @@
 var error = false;
 function updatePage(data) {
     if(data.split(" ")[0] === "Thank") { // register success
-        document.getElementById("form").innerHTML = '<p id="success" class="label" style="border: 2px; width: 95%">'+data+'</p>';
+        document.getElementById("form").innerHTML = '<div id="success" class="label" style="border: 2px; width: 95%">'+data+'</div>';
+        $("html, body").animate({ scrollTop: 0 }, "slow");
     } else { // register failure
         if(error === false) {
-            document.getElementById("registerForm").innerHTML = '<p id="failure" class="label" style="border: 2px; width: 95%; margin-bottom: 6px; margin-top: -6px">'+data+'</p></div>' +
+            document.getElementById("registerForm").innerHTML = '<div><div id="failure" class="label" style="border: 2px; width: 95%; margin-bottom: 6px; margin-top: -6px">'+data+'</div></div>' +
                 document.getElementById("registerForm").innerHTML; 
             error = true;
         } else {

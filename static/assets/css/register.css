@@ -58,7 +58,28 @@ body {
         color: #fff;
         font-size: 1.2em;
         letter-spacing: .08em; }
-    #landing #form button p {
+    #landing #form .label {
+      width: 10%;
+      text-transform: uppercase;
+      font-family: "Roboto Condensed", sans-serif;
+      letter-spacing: .08em;
+      font-size: 20px;
+      font-weight: bold;
+      /*margin-left: -4px;*/
+      outline: 0;
+      color: #fff;
+      cursor: text;
+      border: 2px #fff solid;
+      background: none;
+      width: 35%;
+      display: inline-block;
+      padding: 4px;
+      margin-top: 10px;
+      -webkit-transition-duration: .3s;
+      -moz-transition-duration: .3s;
+      -o-transition-duration: .3s;
+      transition-duration: .3s; }
+    #landing #form button {
       width: 10%;
       text-transform: uppercase;
       font-family: "Roboto Condensed", sans-serif;

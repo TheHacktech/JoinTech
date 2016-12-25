@@ -24,8 +24,7 @@
                 <div><input type="text" name="fname" id="fname" placeholder="First Name *" style="width: 30%">
                 <input type="text" name="lname" id="lname" placeholder="Last Name *" style="width: 30%">
                 <input type="text" name="email" id="email" placeholder="Email *" style="width: 30%"></div>
-                <p id="ageExplain" class="label" style="float:left; border: 2px; width: 50%">I will be 18 or older on March 3, 2017:</p>
-                <div><input type="checkbox" class="checkbox" name="age" id="age"></div>
+                <div><div type="button" id="ageExplain" class="label" style="border: 2px; width: 50%"> I will be 18 or older on March 3, 2017:</div><input type="checkbox" class="checkbox" name="age" id="age"></div>
                 <div style="margin: 6px"><select onchange="checkOther();" id="gradeDrop" name="grade" style="width: 45%">
                     <option value="default" disabled selected>Grade *</option>
                     <option value="hs">High School</option>      
@@ -50,17 +49,12 @@
                     <option value="ucsd">UC San Diego</option>
                     <option value="stan">Stanford</option>
                     <option value="usc">USC</option>
-                </select></div>
-                <p id="webExplain" class="label" style="float:left; border: 2px; width: 50%">I'm interested in web development:</p>
-                <div><input type="checkbox" class="checkbox" name="webdev" id="webdev"></div>
-                <p id="mobExplain" class="label" style="float:left; border: 2px; width: 50%">I'm interested in mobile development:</p>
-                <div><input type="checkbox" class="checkbox" name="mobiledev" id="mobiledev"></div>
-                <p id="arvrExplain" class="label" style="float:left; border: 2px; width: 50%">I'm interested in augmented/virtual reality:</p>
-                <div><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
-                <p id="hwExplain" class="label" style="float:left; border: 2px; width: 50%">I'm interested in hardware projects:</p>
-                <div><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
-                <p id="aiExplain" class="label" style="float:left; border: 2px; width: 50%">I'm interested in AI/machine learning:</p>
-                <div><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
+                    </select></div>
+                <div><div id="webExplain" class="label" style="border: 2px; width: 60%">I'm interested in web development:</div><input type="checkbox" class="checkbox" name="webdev" id="webdev"></div>
+                <div><div type="button" id="mobileExplain" class="label" style="border: 2px; width: 60%">I'm interested in mobile development:</div><input type="checkbox" class="checkbox" name="mobiledev" id="mobiledev"></div>
+                <div><div type="button" id="arvrExplain" class="label" style="border: 2px; width: 60%">I'm interested in augmented/virtual reality:</div><input type="checkbox" class="checkbox" name="arvrdev" id="arvrdev"></div>
+                <div><div type="button" id="hardwareExplain" class="label" style="border: 2px; width: 60%">I'm interested in hardware projects:</div><input type="checkbox" class="checkbox" name="hardwaredev" id="hardwaredev"></div>
+                <div><div id="aiExplain" type="button" class="label" style="border: 2px; width: 60%">I'm interested in AI/machine learning:</div><input type="checkbox" class="checkbox" name="aidev" id="aidev"></div>
                 <div style="margin: 6px; margin-bottom: 0;"><input type="url" name="website" id="website" style="width: 30%" placeholder="Personal Website">
                     <input type="url" name="github" id="github" style="width: 30%" placeholder="Github Profile">
                     <input type="url" name="linkedin" id="linkedin" style="width: 30%" placeholder="LinkedIn Profile"></div>
@@ -68,15 +62,10 @@
                 <textarea name="techsimplify" id="techsimplify" placeholder="What is something you did today that could have been simplified/automated/made more exciting with technology? *" rows="6"></textarea>
                 <textarea name="hacktechsuggest" id="hacktechsuggest" placeholder="What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *" rows="6"></textarea>
                 <textarea name="othercomment" id="othercomment" placeholder="If you have questions or have anything else you’d like to add, please do so here." rows="6"></textarea>
-                <br />
-                <p id="resumeExplain" class="label" style="float:left; border: 2px; width: 50%">Upload your resume:</p>
-		<div><button type="button" id="resumeUploadBtn" style="width: 45%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
-		<input type="file" id="resumefileinput" name="resumefileinput" style="display: none" accept=".doc,.docx,.pdf,.txt,.rtf" onchange="updateBtnTxt()">
+                <div><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 45%">Upload your resume:</div><button type="button" id="resumeUploadBtn" style="width: 45%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
+                <input type="file" id="resumefileinput" name="resumefileinput" style="display: none" accept=".doc,.docx,.pdf,.txt,.rtf" onchange="updateBtnTxt()">
                 </div>
-                <br />
-                <p id="cocExplain" class="label" style="float:left; border: 2px; width: 50%">I agree to abide by the MLH Code of Conduct *</p>
-                <div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
-                <br />
+                <div><div id="cocExplain" type="button" class="label" style="border: 2px; width: 60%">I agree to abide by the MLH Code of Conduct *</div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
                 <input id="formSubmit" class="btn btn-tech" type="submit" value="Apply">
         <!-- <button id="apply">Apply</button> -->
             </form>

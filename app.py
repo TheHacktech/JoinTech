@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='static/assets')
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:////tmp/test.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///hacktech'
-app.config['UPLOAD_FOLDER'] = '/resumes'
+app.config['UPLOAD_FOLDER'] = '/home/potato/resumes'
 db = SQLAlchemy(app)
 
 class User(db.Model):

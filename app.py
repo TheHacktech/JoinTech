@@ -87,7 +87,7 @@ class RegistrationForm(Form):
     fname = StringField('First Name', [validators.Length(min=1, max=120), validators.DataRequired()])
     lname = StringField('Last Name', [validators.Length(min=1, max=120), validators.DataRequired()])
     email = StringField('Email', [validators.Length(min=6, max=120), validators.Email(), validators.DataRequired()])
-    age = BooleanField('Age', [validators.DataRequired()])
+    age = BooleanField('Age')
     grade = StringField('Grade', [validators.DataRequired()])
     school = StringField('School/University', [validators.DataRequired()])
     busorigin = StringField('Bus Origin')

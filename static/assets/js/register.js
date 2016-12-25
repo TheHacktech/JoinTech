@@ -1,3 +1,4 @@
+$("body").backstretch("/assets/img/moles-01-01.png");
 function updatePage(data) {
     if(data.split(" ")[0] === "Thank") { // register success
         document.getElementById("form").innerHTML = '<div id="success" class="label" style="border: 2px; width: 95%">'+data+'</div>';

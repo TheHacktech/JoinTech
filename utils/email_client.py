@@ -16,13 +16,12 @@ def send_email(email, subject, html):
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(GMAIL_USER, GMAIL_PASSWORD)
-        server.sendmail(GMAIL_USER, email, email_text)
+        server.sendmail(GMAIL_USER, [email], msg.as_string())
         server.close()
-
         # logging.info('Sent Application Confirmation Email to %s', email)
         print 'It worked!'
-    except:  
+    except Exception, e:
         # logging.info('FAILED Sending Application Confirmation to %s', email)
         print 'Something went wrong...'
-
+        # print str(e)
 

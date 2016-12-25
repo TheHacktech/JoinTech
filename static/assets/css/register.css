@@ -58,7 +58,7 @@ body {
         color: #fff;
         font-size: 1.2em;
         letter-spacing: .08em; }
-    #landing #form button {
+    #landing #form button p {
       width: 10%;
       text-transform: uppercase;
       font-family: "Roboto Condensed", sans-serif;
@@ -73,14 +73,6 @@ body {
       width: 35%;
       padding: 4px;
       margin-top: 10px;
-      -webkit-transition-duration: .3s;
-      -moz-transition-duration: .3s;
-      -o-transition-duration: .3s;
-      transition-duration: .3s; }
-    #landing #form button:hover {
-      background-color: #fff;
-      color: #cd989f;
-      cursor: pointer;
       -webkit-transition-duration: .3s;
       -moz-transition-duration: .3s;
       -o-transition-duration: .3s;
@@ -347,7 +339,7 @@ body {
 @media screen and (max-width: 1200px) {
   #landing #form {
     text-align: center; }
-    #landing #form button {
+    #landing #form button p {
       margin-top: 10px;
       width: 80%; }
     #landing #form input {

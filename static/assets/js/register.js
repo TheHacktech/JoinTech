@@ -1,3 +1,5 @@
+$("body").backstretch("/assets/img/moles-01-01.png");
+
 var error = false;
 function updatePage(data) {
     if(data.split(" ")[0] === "Thank") { // register success

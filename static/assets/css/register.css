@@ -58,7 +58,7 @@ body {
         color: #fff;
         font-size: 1.2em;
         letter-spacing: .08em; }
-    #landing #form .label {
+    .label {
       width: 10%;
       text-transform: uppercase;
       font-family: "Roboto Condensed", sans-serif;
@@ -105,9 +105,6 @@ body {
       -moz-transition-duration: .3s;
       -o-transition-duration: .3s;
       transition-duration: .3s; }
-    #landing #form .label {
-      background: none;
-      color: #fff; }
   #landing select {
     width: 10%;
     text-transform: uppercase;
@@ -397,3 +394,9 @@ body {
     font-size: 14px; }
   #landing input {
     font-size: 14px; } }
+
+/* For the long response questions */
+.longresponse {
+  width: 85%;
+  text-align: left;
+}

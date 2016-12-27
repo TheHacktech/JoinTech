@@ -6,7 +6,6 @@
     <link href="/assets/css/register.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Caltech's annual Hackathon!">
@@ -59,16 +58,21 @@
                 <div style="margin-top: 3px;"><div type="button" id="websiteExplain" class="label" style="border: 2px; width: 30%">Personal Website:</div><input type="url" name="website" id="website" style="width: 60%" onclick="personalUpdate('website')" onblur="personalRemove('website')" placeholder="http://www.caltech.edu"></div>
                 <div><div type="button" id="ghExplain" class="label" style="border: 2px; width: 30%">Github Profile:</div><input type="url" name="github" id="github" style="width: 60%" onclick="personalUpdate('github')" onblur="personalRemove('github')" placeholder="http://www.github.com/thehacktech"></div>
                 <div style="margin-bottom: 3px;"><div type="button" id="linkedinExplain" class="label" style="border: 2px; width: 30%">LinkedIn Profile:</div><input type="url" name="linkedin" id="linkedin" style="width: 60%" onclick="personalUpdate('linkedin')" onblur="personalRemove('linkedin')" placeholder="http://www.linkedin.com/company/hacktech"></div>
-                <textarea name="poem" id="poem" placeholder="Write an acrostic poem based around the word 'ROSE'. *" rows="6"></textarea>
-                <textarea name="techsimplify" id="techsimplify" placeholder="What is something you did today that could have been simplified/automated/made more exciting with technology? *" rows="6"></textarea>
-                <textarea name="hacktechsuggest" id="hacktechsuggest" placeholder="What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *" rows="6"></textarea>
-                <textarea name="othercomment" id="othercomment" placeholder="If you have questions or have anything else you’d like to add, please do so here." rows="6"></textarea>
-                <div><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 30%">Upload your resume:</div><button type="button" id="resumeUploadBtn" style="width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
+                <div style="margin-bottom: 5px;"><div id="resumeExplain" class="label" type="button" style="border: 2px; width: 30%">Upload your resume:</div><button type="button" id="resumeUploadBtn" style="width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" onclick="uploadResume()">Click to upload</button>
                 <input type="file" id="resumefileinput" name="resumefileinput" style="display: none" accept=".doc,.docx,.pdf,.txt,.rtf" onchange="updateBtnTxt()">
                 </div>
+
+                <div id="poemExplain" class="longresponse label" style="border: 2px;">Write an acrostic poem based around the word 'ROSE'. *</div>
+                <textarea name="poem" id="poem" rows="6"></textarea>
+                <div id="techExplain" class="longresponse label" style="border: 2px;">What is something you did today that could have been simplified/automated/made more exciting with technology? *</div>
+                <textarea name="techsimplify" id="techsimplify" rows="6"></textarea>
+                <div id="suggestExplain" class="longresponse label" style="border: 2px;">What are some cool things you’d like to see at Hacktech? These could be mini-events, hardware, or anything really! *</div>
+                <textarea name="hacktechsuggest" id="hacktechsuggest" rows="6"></textarea>
+                <div id="otherExplain" class="longresponse label" style="border: 2px;">If you have questions or have anything else you’d like to add, please do so here.</div>
+                <textarea name="othercomment" id="othercomment" rows="6"></textarea>
+                
                 <div><div id="cocExplain" type="button" class="label" style="border: 2px; width: 60%">* I agree to abide by the MLH Code of Conduct:</div><input type="checkbox" class="checkbox" name="accept_tos" id="accept_tos"></div>
                 <input id="formSubmit" class="btn btn-tech" type="submit" value="Apply">
-        <!-- <button id="apply">Apply</button> -->
             </form>
       </div>
     </section>
